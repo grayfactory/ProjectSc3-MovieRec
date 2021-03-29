@@ -1,0 +1,7 @@
+preprocessing_db/
+.vscode
+upload_db/
+db.sqlite3
+query_savs.py
+save.html
+.DS_Store
