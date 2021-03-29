@@ -61,7 +61,7 @@ def init_first_movies():
 
     # 초기 20개 랜덤으로 추천
     # genre 필터를 고를 수 있게 수정
-    q_movies = get_init_movies(genre='Action',n_select=20)
+    q_movies = get_init_movies(n_select=20)
     movie_list = []
     for movie in q_movies:
         movie_list.append({"title":movie.title, "id":movie.movie_id})  # Movie table에서 movie_id 로넘겨주고
