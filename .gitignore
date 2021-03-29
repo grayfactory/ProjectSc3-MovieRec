@@ -6,3 +6,4 @@ query_savs.py
 save.html
 .DS_Store
 mvrec_app/db.sqlite3
+mvrec_app/model/*.csv

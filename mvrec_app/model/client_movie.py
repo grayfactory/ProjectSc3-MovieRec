@@ -6,10 +6,10 @@ class RatingClient(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     client_rating = db.Column(db.Integer())
     # movie id
-    movie_id = db.Column(db.Integer(), db.ForeignKey('rating_users.movie_id'))
+    movie_id = db.Column(db.Integer(), db.ForeignKey('movies.movie_id'))
     naver_id = db.Column(db.Integer(), db.ForeignKey('naver_movies.id'))
 
-    rated_users = db.relationship("RatingUsers", backref='ratingclient', lazy=True)
+    # rated_users = db.relationship("RatingUsers", backref='ratingclient', lazy=True)
     naver_api_info = db.relationship("NaverMovies", backref='clientrating', lazy=True)
 
     def __repr__(self):
