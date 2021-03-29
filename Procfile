@@ -1,0 +1,1 @@
+web: gunicorn --workers=2 'mvrec_app:create_app()'
