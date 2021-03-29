@@ -16,8 +16,8 @@ def create_app(config=None):
         app.config.from_object('config.ProductionConfig')
     else:
         app.config.from_object('config.DevelopmentConfig')
-
-    app.config.update(config)
+    if config is not None:
+        app.config.update(config)
 
     db.init_app(app)
     migrate.init_app(app, db
