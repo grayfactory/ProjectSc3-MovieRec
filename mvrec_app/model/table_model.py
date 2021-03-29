@@ -17,7 +17,7 @@ class Movies(db.Model):
     __tablename__ = "movies"
 
     id = db.Column(db.Integer(), primary_key=True)
-    movie_id = db.Column(db.Integer())
+    movie_id = db.Column(db.Integer(), unique=True)
     title = db.Column(db.String())
     genre = db.Column(db.String())
     weight_rating = db.Column(db.Float())
