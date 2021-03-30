@@ -3,6 +3,7 @@ preprocessing_db/
 upload_db/db.sqlite3
 upload_db/link_db.py
 upload_db/load_data.py
+upload_db/*.csv
 db.sqlite3
 query_savs.py
 save.html
