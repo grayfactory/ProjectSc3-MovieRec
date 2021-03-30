@@ -108,8 +108,9 @@ def store_sim_user_movies(sim_user, n_limit=10):
 
         isin_Rating = RatingClient.query.filter(RatingClient.movie_id == movie.movie_id).one_or_none()
         isin_NotSee = NotSeenClient.query.filter(NotSeenClient.movie_id == movie.movie_id).one_or_none()
+        isin_keep = KeepMovies.query.filter(KeepMovies.movie_id == movie.movie_id).one_or_none()
 
-        if (isin_Rating is None and isin_NotSee is None):
+        if (isin_Rating is None and isin_NotSee is None and isin_keep is None):
 
             m = Movies.query.filter(Movies.movie_id==movie.movie_id).one_or_none()
             movie_list = naver_movie_api([{'title':m.title, 'id':m.movie_id}])
@@ -151,5 +152,10 @@ def store_keep_movie(movie_id):
         db.session.add(record)
         db.session.commit()
 
+def get_naver_api_movies(movie_id_list):
+
+    q_movies = NaverMovies.query.filter(NaverMovies.movie_id.in_(movie_id_list)).all()
+
+    return q_movies
 
 

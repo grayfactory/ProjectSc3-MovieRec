@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
-
+from mvrec_app.utils.youtube_api import youtube_api
 
 def cosine_sim(join_db, client_db, ratio=0.6):
 
@@ -26,7 +26,7 @@ def cosine_sim(join_db, client_db, ratio=0.6):
     df = pd.concat([df_client, df_pivot])
     df = df.fillna(0)
 
-    print(df)
+    # print(df)
 
     # similarity 계산
     sim_scores = []
@@ -47,5 +47,60 @@ def cosine_sim(join_db, client_db, ratio=0.6):
     return sim_user
 
 
+def movie_list_dict(q_movies, keep=None):
+    if keep is None:
+        movie_list=[]
+        for movie in q_movies:
+            movie_list.append({"title_kr":movie.naver_api_info.title_kr, 
+                                    "id":movie.naver_api_info.movie_id,
+                                    "title_original":movie.naver_api_info.title_original,
+                                    "image":movie.naver_api_info.image,
+                                    "pubdate":movie.naver_api_info.pubdate,
+                                    }
+                                    )
+        return movie_list
 
+    if keep == 'rating':
+        movie_list=[]
+        for movie in q_movies:
+            movie_list.append({"title_kr":movie.naver_api_info.title_kr, 
+                                    "id":movie.naver_api_info.movie_id,
+                                    "rating":movie.client_rating
+                                    }
+                                    )
+        return movie_list
+                            
+    if keep == 'keep':
+        movie_list=[]
+        for movie in q_movies:
+            movie_list.append({"title_kr":movie.naver_api_info.title_kr, 
+                                "id":movie.naver_api_info.movie_id,
+                                "title_original":movie.naver_api_info.title_original,
+                                "image":movie.naver_api_info.image,
+                                "pubdate":movie.naver_api_info.pubdate,
+                                "youtube_url":youtube_api(movie.naver_api_info.title_original)
+                                }
+                                )
+        return movie_list
 
+    # if keep == 'rec':
+    #     movie_list = []
+    #     duplicats = []
+    #     # 현재 랜더된 영화를 유지하면서 redirect
+    #     for movie in get_render_movies(): 
+    #         # print(movie, "=="*50)
+    #         duplicats.append(movie.rendered_movies.movie_id)
+    #         # print(duplicats, movie.rendered_movies.movie_id)
+    #         if duplicats.count(movie.rendered_movies.movie_id) > 1:
+    #             continue
+    #         else :
+    #             # print(movie, movie.naver_id,'++'*50)
+    #             ## movie_list = "image", "title_kr", "pubdate", "title_original"
+    #             movie_list.append({"title_kr":movie.naver_api_info.title_kr, 
+    #                                 "id":movie.naver_api_info.movie_id,
+    #                                 "title_original":movie.naver_api_info.title_original,
+    #                                 "image":movie.naver_api_info.image,
+    #                                 "pubdate":movie.naver_api_info.pubdate
+    #                                 }
+    #                                 )
+    #     return movie_list

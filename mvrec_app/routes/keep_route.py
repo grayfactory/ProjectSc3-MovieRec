@@ -9,18 +9,8 @@ bp = Blueprint('keeps',__name__)
 @bp.route('/getkeeps', methods=['GET','POST'])
 def get_keeps():
 
-    movie_list = []
-    for movie in KeepMovies.query.all():
-        movie_list.append({"title_kr":movie.naver_api_info.title_kr, 
-                                "id":movie.naver_api_info.movie_id,
-                                "title_original":movie.naver_api_info.title_original,
-                                "image":movie.naver_api_info.image,
-                                "pubdate":movie.naver_api_info.pubdate,
-                                "youtube_url":youtube_api(movie.naver_api_info.title_original)
-                                }
-                                )
+    movie_list = [q_movies.movie_id for q_movies in KeepMovies.query.all()]
         
-
     return redirect(url_for('main.init_keeps'
                             # , _anchor=scroll_idx
                             , movie_list=str(movie_list)))
