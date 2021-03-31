@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block head %}
+<style>
+    .table{
+      width: 800px;
+      /* height: 500px; */
+      /* margin: 0 100px 30px 100px;*/
+      /* background-position: center; */
+    }
+    /* table tag에 class center를 넣어주고, css로 선택 */
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+{% endblock %}
+
+{% block lead  %}
+{% if msg is none %}
+현재까지 평가한 영화를 확인해주세요
+{% else %}
+추천버튼을 눌러 영화 추천을 받으세요
+{% endif %}
+{% endblock  %}
+
+{% block mainbutton %}
+<p>
+    {% if msg is none %}
+    <a href="/api/getmyrating" class="btn btn-primary my-2">확인하기</a>
+    {% else %}
+    <a href="/api/getrec" class="btn btn-primary my-2">추천받기</a>
+    {% endif %}
+</p>
+
+{% endblock %}
+
+
+{% block main_body  %}
+{% if movie_list is not none %}
+<table class="table">
+    <!-- 작은 기기에서 수평 스크롤을 할 수 있는 반응형 테이블을 만드는 방법  -->
+    <div class="table-responsive">
+      <table class="table table-striped align-middle center">
+    <!-- 어떤 tag의 위치에 text-center와 같은 class 를 넣는지 중요,
+    붓스트랩에서는 text-center가 미리 클래스로 정의되어있기 때문에 그냥 삽입하면된다 -->
+    <thead class="table-dark text-center"> 
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Rating</th>
+        <th scope="col">삭제</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      {% for movie in movie_list %}
+      <tr>
+        <th scope='row'>{{ loop.index }}</th>
+        <td>{{ movie.title_kr }}</td>
+        <td>{{ movie.rating }}</td>
+        <td>
+            <a href="/api/delete/{{ movie.id }}" class="btn btn-danger"><i class="far fa-trash-alt"></i>삭제</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    </table>>
+    </div>>
+  </table>
+
+{% endif %}
+{% endblock  %}

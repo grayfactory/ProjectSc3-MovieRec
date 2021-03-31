@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block lead  %}
+
+{% if msg is none %}
+Keep에 담아둔 영화를 확인해 주세요
+{% elif msg == 'empty' %}
+텅~ 텅~
+{% else %}
+TRAILER 버튼을 클릭해 예고편 보러가기
+{% endif %}
+
+{% endblock  %}
+
+{% block mainbutton %}
+<p>
+    {% if msg is none %}
+    <a href="/api/getkeeps" class="btn btn-primary my-2">확인하기</a>
+    {% elif msg == 'empty' %}
+    <a href="/api/getrec" class="btn btn-primary my-2">추천받기</a>
+    {% else %}
+    <!-- <a href="/api/getrec" class="btn btn-primary my-2">추천받기</a> -->
+    {% endif %}
+</p>
+
+{% endblock %}
+
+
+{% block main_body %}
+<div class="album py-5 bg-light">
+    <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% if movie_list %}
+          {% for movie in movie_list %}
+        <div class="col">
+            <form method="POST" action="/api/rating">
+                <div id="{{ loop.index }}", name='scrollindex',value="{{ loop.index }}" >
+                    <input type="hidden", name="scrollindex", value="{{ loop.index }}">
+                </div>
+            <div class="card shadow-sm">
+                {% if movie.image is not none %}
+                <img src="{{movie.image}}" class="img-thumbnail rounded mx-auto d-block " width="250" alt="Responsive image">
+                {% else %}
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                {% endif %}
+
+              <div class="card-body">
+                <p class="card-text">{{movie.title_kr}} ({{movie.pubdate}})<br> {{movie.title_original}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a class="btn btn-sm btn-outline-secondary" href="{{movie.youtube_url}}" role="button">Trailer</a>
+                    <a href="/api/delete/keep/{{ movie.id }}" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i>삭제</a>
+                </div>
+              </div>
+            </div>
+            </form> 
+        </div>
+        {% endfor %}
+          {% endif %}
+    </div>
+    </div>             
+</div>
+{% endblock %}

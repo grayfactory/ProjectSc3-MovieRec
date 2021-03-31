@@ -1,0 +1,12 @@
+preprocessing_db/
+.vscode
+upload_db/db.sqlite3
+upload_db/link_db.py
+upload_db/load_data.py
+upload_db/*.csv
+db.sqlite3
+query_savs.py
+save.html
+.DS_Store
+mvrec_app/db.sqlite3
+mvrec_app/model/*.csv
