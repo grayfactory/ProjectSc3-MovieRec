@@ -1,7 +1,7 @@
 # ProjectSc3-MovieRec
 
 # PROJECT 주말N명화
-본격, UserBase 영화 큐레이션 시스템
+본격, UserBase 영화 큐레이션 시스템  
 https://themovierec-app.herokuapp.com/
 ## 기획의도
 넷플릭스, 디즈니, 애플TV, 유튜브 등등 볼거리는 넘처나는데 막상 볼 영화를 잘 고르지 못하는 당신을 위한 솔루션  
