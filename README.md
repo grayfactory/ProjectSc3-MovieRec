@@ -22,5 +22,3 @@
 
 ## Structure
 ![](https://user-images.githubusercontent.com/74405346/113112674-68495580-9244-11eb-8aad-5bf2fca738b5.png)
-
-<img src="https://user-images.githubusercontent.com/74405346/113112674-68495580-9244-11eb-8aad-5bf2fca738b5.png" alt="" style="max-width:10%;">
