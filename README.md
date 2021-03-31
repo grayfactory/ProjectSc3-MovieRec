@@ -2,6 +2,7 @@
 
 # PROJECT 주말N명화
 본격, UserBase 영화 큐레이션 시스템
+https://themovierec-app.herokuapp.com/
 ## 기획의도
 넷플릭스, 디즈니, 애플TV, 유튜브 등등 볼거리는 넘처나는데 막상 볼 영화를 잘 고르지 못하는 당신을 위한 솔루션  
 500편 이상을 본 검증된 User pool을 기반으로 당신의 취향과 유사한 User가 추천하는 **'볼만한'** 영화 큐레이션
