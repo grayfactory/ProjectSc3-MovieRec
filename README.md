@@ -19,4 +19,4 @@
 
 ## DB schema
 ![schema](https://user-images.githubusercontent.com/74405346/112937095-031d3380-9162-11eb-805c-75ad417bdc40.png)
->>>>>>> f5de521f7ae0b0acfd90f2f857a04bdfe36f6149
+
