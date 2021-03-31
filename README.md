@@ -21,4 +21,4 @@
 ![schema](https://user-images.githubusercontent.com/74405346/112937095-031d3380-9162-11eb-805c-75ad417bdc40.png)
 
 ## Structure
-![image](https://user-images.githubusercontent.com/74405346/113112674-68495580-9244-11eb-8aad-5bf2fca738b5.png){: width="200" height="200"}
+![image](https://user-images.githubusercontent.com/74405346/113112674-68495580-9244-11eb-8aad-5bf2fca738b5.png | width=100)
