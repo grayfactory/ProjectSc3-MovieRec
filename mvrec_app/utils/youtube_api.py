@@ -3,7 +3,7 @@ import requests
 
 def youtube_api(title_original):
 
-    key = 'AIzaSyA0CFMxTI0saf2w3JFKYboT2kcaaMb1VB0'
+    key = ''
     query = title_original + ' trailer'
     maxvalue=1
     url = f'https://www.googleapis.com/youtube/v3/search?part=snippet&key={key}&q={query}&maxResults={maxvalue}'
