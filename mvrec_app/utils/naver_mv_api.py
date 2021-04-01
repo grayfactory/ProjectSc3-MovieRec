@@ -6,8 +6,8 @@ from time import sleep
 movie_list 는 dictionary의 리스트
 ex) {'title': 'Rocketeer, The (1991)', 'id': 2094}
 """
-client_id = "e9M_YCsycX7H_JjeT9mL"
-client_secret = "LwLTgtqvqf"
+client_id = ""
+client_secret = ""
 
 def naver_movie_api(movie_list):
     movie_list_kr = []
